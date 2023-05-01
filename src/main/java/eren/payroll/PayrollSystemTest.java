@@ -2,7 +2,7 @@ package eren.payroll;
 
 // Fig. 10.9: PayrollSystemTest.java
 
-import java.time.LocalDate;
+
 
 // Employee hierarchy test program.
 
@@ -19,35 +19,41 @@ public class PayrollSystemTest {
       BasePlusCommissionEmployee basePlusCommissionEmployee =             
          new BasePlusCommissionEmployee(                                  
          "Bob", "Lewis", "444-44-4444", 5000, .04, 300, new Date (07,23,2002));                  
-
+      BasePlusCommissionEmployee Eren =             
+         new BasePlusCommissionEmployee(                                  
+         "Eren", "Inan", "742-21-4423", 1000, .03, 200, new Date (9,8,2002));                  
+      
+      
       
       // create four-element Employee array
-      Employee[] employees = new Employee[4]; 
+      Employee[] employees = new Employee[5]; 
 
       // initialize array with Employees        
       employees[0] = salariedEmployee;          
       employees[1] = hourlyEmployee;            
       employees[2] = commissionEmployee;        
       employees[3] = basePlusCommissionEmployee;
+      employees[4] = Eren;
 
     
-      // get type name of each object in employees array
-      for (int j = 0; j < employees.length; j++) {      
-         System.out.printf("Employee %d is a %s%n", j,  
-            employees[j].getClass().getName());         
-      }   
+   
       
-      int currentMonth = LocalDate.now().getMonthValue();
-      for (Employee employee : employees) {
+     
+     for (Employee employee : employees) {
+  
+   if (employee.earnings() <= 600) {
+    
       System.out.printf("%n%s%nearnings: $%,.2f%n", employee, employee.earnings());
 
-      if (employee.getbirthdate().getMonth() == currentMonth) {
-         System.out.println("It is your birth month, we have added a $100 bonus to your earnings");
-         System.out.printf("New earnings: $%,.2f%n", employee.earnings() + 100);
-      }
       
-      
-      
+   }
+   else{
+       System.out.println(" ");
+       System.out.print(employee.getFirstName()+" "+employee.getLastName());
+       System.out.println(" ");
+       System.out.print("This Employee made more than $600");
+       System.out.println(" ");
+}
       
       
       
